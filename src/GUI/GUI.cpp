@@ -1,4 +1,4 @@
-#include "../../include/GUI/GUI.h"
+#include "GUI/GUI.h"
 
 GUI::Button::Button(float x, float y, float width, float height,
 	sf::Font* font, std::string text, unsigned int characterSize,

@@ -31,7 +31,6 @@ namespace GUI
 
 		sf::Font*			font;
 		sf::Text			text;
-		unsigned int		characterSize;
 
 		sf::Color			textIdleColor;
 		sf::Color			textHoverColor;
