@@ -1,0 +1,13 @@
+.idea/
+.vs/
+
+x64/
+x86/
+
+packages/
+
+*.config
+*.user
+*.vcxproj
+*.filters
+*.sln
