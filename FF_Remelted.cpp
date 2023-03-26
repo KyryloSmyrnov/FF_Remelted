@@ -1,8 +1,18 @@
+/*
+****************************************
+ * FF_REMELTED
+ * 
+ * Copyright (C) 2023 Kyrylo Smyrnov
+ * 
+ * @KyryloSmyrnov
+ ****************************************
+ */
+
 #include <SFML/Graphics.hpp>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(2560, 1440), "SFML works!", sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(2560, 1440), "FF_REMELTED", sf::Style::Fullscreen);
     
     while (window.isOpen())
     {
@@ -12,7 +22,6 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
         window.display();
         window.clear();
     }

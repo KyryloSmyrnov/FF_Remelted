@@ -1,10 +1,21 @@
+/*
+****************************************
+ * FF_REMELTED
+ * 
+ * Copyright (C) 2023 Kyrylo Smyrnov
+ * 
+ * @KyryloSmyrnov
+ ****************************************
+ */
+
 #pragma once
 #include "SFML/Graphics.hpp"
 
 enum buttonState
 {
 	BUTTONIDLE =	0,
-	BUTTONHOVER =	1
+	BUTTONHOVER =	1,
+	BUTTONCLICKED = 2
 };
 
 namespace GUI
@@ -18,9 +29,17 @@ namespace GUI
 			   sf::Color idleColor, sf::Color hoverColor);
 		~Button();
 
-		void Update(const sf::Vector2i& mousePosition);
-		void Render(sf::RenderTarget& target);
+		void				Update(const sf::Vector2i& mousePosition);
+		void				Render(sf::RenderTarget& target);
 
+		const bool			IsPressed() const;
+
+		const std::string	GetText() const;
+		const int			GetId() const;
+		
+		void				SetText(std::string string);
+		void				SetId(int id);
+		
 	private:
 		buttonState			currentState;
 
@@ -37,7 +56,29 @@ namespace GUI
 
 		sf::Color			idleColor;
 		sf::Color			hoverColor;
+
+		unsigned short int	buttonId;
+	};
+	
+	class DropDownList
+	{
+	public:
+		DropDownList(float x, float y, float width, float height,
+					 sf::Font& font, std::vector<std::string> list, unsigned int characterSize,
+					 sf::Color textIdleColor, sf::Color textHoverColor,
+					 sf::Color idleColor, sf::Color hoverColor,
+					 unsigned int defaultId = 0);
+		~DropDownList();
+
+		void						Update(const sf::Vector2i& mousePosition);
+		void						Render(sf::RenderTarget& target);
+		
+	private:
+		sf::Font&					font;
+		
+		GUI::Button*				activeButton;
+		std::vector<GUI::Button*>	buttons;
+		
+		bool						activeList;
 	};
 }
-
-
