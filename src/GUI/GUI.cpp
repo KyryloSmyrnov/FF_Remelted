@@ -34,8 +34,7 @@ GUI::Button::Button(float x, float y, float width, float height,
 	this->text.setFillColor(textIdleColor);
 	this->text.setCharacterSize(characterSize);
 
-	this->text.setPosition(x + width * 0.5 - this->text.getGlobalBounds().width * 0.5,
-		y + height * 0.5 - this->text.getGlobalBounds().height * 0.5);
+	CenterText();
 
 	this->textIdleColor = textIdleColor;
 	this->textHoverColor = textHoverColor;
@@ -52,24 +51,31 @@ void GUI::Button::Update(const sf::Vector2i& mousePosition)
 	if (this->buttonShape.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)))
 	{
 		this->currentState = BUTTONHOVER;
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !this->isClicked)
+		{
 			this->currentState = BUTTONCLICKED;
+			this->isClicked = true;
+		}
+		else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->isClicked)
+		{
+			this->isClicked = false;
+		}
 	}
 
 	switch (currentState)
 	{
 		case BUTTONIDLE:
 			this->buttonShape.setFillColor(this->idleColor);
-			this->text.setFillColor(this->textIdleColor);
-			break;
+		this->text.setFillColor(this->textIdleColor);
+		break;
 
 		case BUTTONHOVER:
 			this->buttonShape.setFillColor(this->hoverColor);
-			this->text.setFillColor(this->textHoverColor);
-			break;
+		this->text.setFillColor(this->textHoverColor);
+		break;
 		case BUTTONCLICKED:
 			/*
-			 *	BUTTON CLICKED
+			 *    BUTTON CLICKED
 			*/
 
 		default:
@@ -85,13 +91,18 @@ void GUI::Button::Render(sf::RenderTarget& target)
 
 const bool GUI::Button::IsPressed() const
 {
-	if (this->currentState == BUTTONCLICKED)
-		return true;
-
-	return false;
+	return (this->currentState == BUTTONCLICKED);
 }
 
-const std::string GUI::Button::GetText() const
+void GUI::Button::CenterText()
+{
+	this->text.setPosition(
+		this->buttonShape.getPosition().x + this->buttonShape.getSize().x * 0.5f - this->text.getGlobalBounds().width * 0.5f,
+		this->buttonShape.getPosition().y + this->buttonShape.getSize().y * 0.5f - this->text.getGlobalBounds().height * 0.5f
+	);
+}
+
+const std::string GUI::Button::GetStringText() const
 {
 	return this->text.getString();
 }
@@ -147,12 +158,9 @@ GUI::DropDownList::~DropDownList()
 void GUI::DropDownList::Update(const sf::Vector2i& mousePosition)
 {
 	this->activeButton->Update(mousePosition);
-
+	
 	if (this->activeButton->IsPressed())
-		if (activeList)
-			activeList = false;
-		else
-			activeList = true;
+		activeList = !activeList;
 
 	if (this->activeList)
 		for (auto& it : buttons)
@@ -160,16 +168,19 @@ void GUI::DropDownList::Update(const sf::Vector2i& mousePosition)
 			it->Update(mousePosition);
 			if (it->IsPressed())
 			{
-				std::string tempText = activeButton->GetText();
+				std::string tempText = activeButton->GetStringText();
 				unsigned short int tempId = activeButton->GetId();
 
 				this->activeList = false;
 
-				this->activeButton->SetText(it->GetText());
+				this->activeButton->SetText(it->GetStringText());
 				this->activeButton->SetId(it->GetId());
 
 				it->SetText(tempText);
 				it->SetId(tempId);
+
+				this->activeButton->CenterText();
+				it->CenterText();
 			}
 		}
 }

@@ -39,7 +39,9 @@ namespace GUI
 
 		const bool IsPressed() const;
 
-		const std::string GetText() const;
+		void CenterText();
+		
+		const std::string GetStringText() const;
 		const int GetId() const;
 
 		void SetText(std::string string);
@@ -63,9 +65,11 @@ namespace GUI
 		sf::Color hoverColor;
 
 		unsigned short int buttonId;
+
+		bool isClicked = false;
 	};
 
-	class DropDownList
+	class DropDownList 
 	{
 	public:
 		DropDownList(float x, float y, float width, float height,
@@ -85,5 +89,5 @@ namespace GUI
 		std::vector<GUI::Button*> buttons;
 
 		bool activeList;
-	};
+	}; 
 }
