@@ -1,4 +1,4 @@
-/*
+﻿/*
 *******************************************************************
  *	______ ______                               _  _             _ 
  *	|  ___||  ___|                             | || |           | |
@@ -13,12 +13,31 @@
 *******************************************************************
  */
 
-#include <Game/Game.h>
+#pragma once
 
-int main()
+#include <SFML/Graphics/Font.hpp>
+#include "Button.h"
+
+
+class DropDownList
 {
-	Game game;
-	game.Run();
+public:
+	DropDownList() { }
+	DropDownList(float x, float y, float width, float height,
+		sf::Font& font, std::vector<std::string> list, unsigned int characterSize,
+		sf::Color textIdleColor, sf::Color textHoverColor,
+		sf::Color idleColor, sf::Color hoverColor,
+		unsigned int defaultId = 0);
+	~DropDownList();
 
-	return 0;
-}
+	void Update(const sf::Vector2i& mousePosition);
+	void Render(sf::RenderTarget& target);
+
+private:
+	sf::Font font;
+
+	Button* activeButton;
+	std::vector<Button*> buttons;
+
+	bool activeList;
+};

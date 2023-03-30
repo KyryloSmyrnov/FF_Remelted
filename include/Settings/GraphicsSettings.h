@@ -1,4 +1,4 @@
-/*
+﻿/*
 *******************************************************************
  *	______ ______                               _  _             _ 
  *	|  ___||  ___|                             | || |           | |
@@ -13,12 +13,28 @@
 *******************************************************************
  */
 
-#include <Game/Game.h>
+#pragma once
 
-int main()
+#include <string>
+#include <vector>
+#include <SFML/Window/ContextSettings.hpp>
+#include <SFML/Window/VideoMode.hpp>
+
+class GraphicsSettings
 {
-	Game game;
-	game.Run();
+public:
+	GraphicsSettings();
+	~GraphicsSettings() { };
 
-	return 0;
-}
+	void LoadFromFile(const std::string filePath);
+	void SaveToFile(const std::string filePath);
+
+	std::string title;
+	sf::VideoMode resolution;
+	sf::ContextSettings contextSettings;
+	std::vector<sf::VideoMode> videoModes;
+
+	bool fullscreen;
+	bool vSync;
+	unsigned int frameRateLimit;
+};

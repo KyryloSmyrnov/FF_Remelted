@@ -1,4 +1,4 @@
-/*
+﻿/*
 *******************************************************************
  *	______ ______                               _  _             _ 
  *	|  ___||  ___|                             | || |           | |
@@ -13,12 +13,29 @@
 *******************************************************************
  */
 
-#include <Game/Game.h>
+#pragma once
 
-int main()
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "Settings/GraphicsSettings.h"
+
+class Game
 {
-	Game game;
-	game.Run();
+public:
+	Game();
+	~Game() { };
 
-	return 0;
-}
+	void Run();
+
+private:
+	void InitGraphicsSettings();
+	void InitWindow();
+	void InitButtons();
+
+	void UpdateEvents();
+
+	void Update();
+	void Render();
+
+	GraphicsSettings graphicsSettings;
+	sf::RenderWindow* window;
+};
