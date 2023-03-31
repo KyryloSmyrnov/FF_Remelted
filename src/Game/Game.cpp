@@ -13,7 +13,7 @@
 *******************************************************************
  */
 
-#include <Game/Game.h>
+#include "Game/Game.h"
 
 Game::Game()
 {
@@ -33,6 +33,13 @@ void Game::Run()
 void Game::InitGraphicsSettings()
 {
 	this->graphicsSettings.LoadFromFile("Config/graphics.ini");
+}
+
+void Game::InitVariables()
+{
+	this->dt = 0.0f;
+	this->window = NULL;
+	this->gridSize = 32.0f;
 }
 
 void Game::InitWindow()
@@ -59,6 +66,11 @@ void Game::UpdateEvents()
 		if (event.type == sf::Event::Closed)
 			this->window->close();
 	}
+}
+
+void Game::UpdateDeltaTime()
+{
+	this->dt = this->dtClock.restart().asSeconds();
 }
 
 void Game::Update()

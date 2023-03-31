@@ -13,36 +13,4 @@
 *******************************************************************
  */
 
-#pragma once
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include "Settings/GraphicsSettings.h"
-
-class Game
-{
-public:
-	Game();
-	~Game() { };
-
-	void Run();
-
-private:
-	void InitGraphicsSettings();
-	void InitVariables();
-	void InitWindow();
-	void InitButtons();
-
-	void UpdateEvents();
-	void UpdateDeltaTime();
-
-	void Update();
-	void Render();
-
-	GraphicsSettings graphicsSettings;
-	sf::RenderWindow* window;
-	
-	float dt;
-	sf::Clock dtClock;
-	float gridSize;
-};
+#include "States/BaseState.h"

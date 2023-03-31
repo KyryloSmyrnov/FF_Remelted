@@ -15,34 +15,21 @@
 
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include <map>
+#include <stack>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "BaseState.h"
 #include "Settings/GraphicsSettings.h"
 
-class Game
+class BaseState;
+
+struct StateData
 {
-public:
-	Game();
-	~Game() { };
+	StateData() { };
 
-	void Run();
-
-private:
-	void InitGraphicsSettings();
-	void InitVariables();
-	void InitWindow();
-	void InitButtons();
-
-	void UpdateEvents();
-	void UpdateDeltaTime();
-
-	void Update();
-	void Render();
-
-	GraphicsSettings graphicsSettings;
-	sf::RenderWindow* window;
-	
-	float dt;
-	sf::Clock dtClock;
 	float gridSize;
+	sf::RenderWindow* window;
+	GraphicsSettings* graphicsSettings;
+	std::map<std::string, int>* availableKeys;
+	std::stack<BaseState*>* states;
 };
