@@ -30,10 +30,10 @@ public:
 	void PauseState();
 	void UnpauseState();
 
-	virtual void UpdateMousePositions(sf::View* view = NULL);
+	virtual void UpdateMousePositions(sf::View* view = nullptr);
 	virtual void UpdateInput(const float& dt) = 0;
 	virtual void Update(const float& dt) = 0;
-	virtual void Render(sf::RenderTarget* target = NULL) = 0;
+	virtual void Render(sf::RenderTarget* target = nullptr) = 0;
 
 protected:
 	StateData* stateData;
@@ -55,5 +55,5 @@ protected:
 
 	std::map<std::string, sf::Texture> textures;
 
-	virtual void initKeyBinds() = 0;
+	virtual void InitKeyBinds() = 0;
 };
