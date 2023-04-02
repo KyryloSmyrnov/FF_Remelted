@@ -45,7 +45,7 @@ private:
 	std::map<std::string, Button*> buttons;
 
 	void InitVariables();
-	void InitKeyBinds() override;
+	void InitKeyBinds() override { };
 	void InitFont();
 	void ResetGUI();
 	void InitGUI();

@@ -16,6 +16,7 @@
 #pragma once
 
 #include "StateData.h"
+#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Window/Mouse.hpp>
 
 class BaseState

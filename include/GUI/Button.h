@@ -32,7 +32,6 @@ enum buttonState
 class Button
 {
 public:
-	Button() { }
 	Button(float x, float y, float width, float height,
 		sf::Font* font, std::string text, unsigned int characterSize,
 		sf::Color textIdleColor, sf::Color textHoverColor,

@@ -25,7 +25,7 @@ class BaseState;
 
 struct StateData
 {
-	StateData() { };
+	StateData() { }
 
 	float gridSize;
 	sf::RenderWindow* window;

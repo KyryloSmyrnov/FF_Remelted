@@ -25,7 +25,7 @@ class GraphicsSettings
 {
 public:
 	GraphicsSettings();
-	~GraphicsSettings() { };
+	~GraphicsSettings() { }
 
 	void LoadFromFile(const std::string filePath);
 	void SaveToFile(const std::string filePath);

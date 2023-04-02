@@ -15,9 +15,12 @@
 
 #pragma once
 
+#include <stack>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Settings/GraphicsSettings.h"
+#include "States/BaseState.h"
+#include "States/MainMenuState.h"
 
 class Game
 {
@@ -30,6 +33,8 @@ public:
 private:
 	void InitGraphicsSettings();
 	void InitVariables();
+	void InitStateData();
+	void InitStates();
 	void InitWindow();
 	void InitButtons();
 
@@ -39,10 +44,14 @@ private:
 	void Update();
 	void Render();
 
+	StateData stateData;
+	std::stack<BaseState*> states;
+	std::map<std::string, int>* availableKeys;
 	GraphicsSettings graphicsSettings;
 	sf::RenderWindow* window;
-	
+
 	float dt;
 	sf::Clock dtClock;
+
 	float gridSize;
 };
