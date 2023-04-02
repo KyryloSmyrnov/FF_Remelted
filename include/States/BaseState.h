@@ -14,15 +14,17 @@
  */
 
 #pragma once
+
 #include "StateData.h"
+#include <SFML/Window/Mouse.hpp>
 
 class BaseState
 {
 public:
 	BaseState(StateData* stateData);
-	virtual ~BaseState();
+	virtual ~BaseState() { };
 
-	const bool& GetQuit;
+	const bool& GetQuit() const;
 
 	void EndState();
 	void PauseState();
@@ -32,17 +34,18 @@ public:
 	virtual void UpdateInput(const float& dt) = 0;
 	virtual void Update(const float& dt) = 0;
 	virtual void Render(sf::RenderTarget* target = NULL) = 0;
-	
+
 protected:
 	StateData* stateData;
 	std::stack<BaseState*>* states;
-	
+	sf::RenderWindow* window;
+
 	std::map<std::string, int>* availableKeys;
 	std::map<std::string, int> keyBinds;
-	
+
 	bool quit;
 	bool paused;
-	
+
 	float gridSize;
 
 	sf::Vector2i screenMousePosition;

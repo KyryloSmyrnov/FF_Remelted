@@ -13,7 +13,6 @@
 *******************************************************************
  */
 
-#include <fstream>
 #include <Settings/GraphicsSettings.h>
 
 GraphicsSettings::GraphicsSettings()

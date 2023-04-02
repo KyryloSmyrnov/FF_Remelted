@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <fstream>
 #include <string>
 #include <vector>
 #include <SFML/Window/ContextSettings.hpp>
