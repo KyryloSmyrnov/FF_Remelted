@@ -7,9 +7,6 @@
  *	| |    | |     | |  |  __/| | | | | ||  __/| || |_|  __/| (_| |
  *	\_|    \_|     |_|   \___||_| |_| |_| \___||_| \__|\___| \__,_|
  *															   
- * Copyright (C) 2023 Kyrylo Smyrnov
- * 
- * @KyryloSmyrnov
 *******************************************************************
  */
 
@@ -18,14 +15,14 @@
 DropDownList::DropDownList(float x, float y, float width, float height,
 	sf::Font& font, std::vector<std::string> list, unsigned characterSize,
 	sf::Color textIdleColor, sf::Color textHoverColor,
-	sf::Color idleColor, sf::Color hoverColor,
+	std::string texturePath, std::string hoverTexturePath,
 	unsigned defaultId)
 	: font(font)
 	, activeList(false)
 {
 	this->activeButton = new Button(x, y, width, height, &font, list[defaultId],
 		characterSize, textIdleColor, textHoverColor,
-		idleColor, hoverColor);
+		texturePath, hoverTexturePath);
 	this->activeButton->SetId(0);
 
 	for (int i = 0; i < list.capacity() - 1; ++i)
@@ -34,7 +31,7 @@ DropDownList::DropDownList(float x, float y, float width, float height,
 			(
 				new Button(x, (y + (i + 1) * height), width, height, &font, list[i + 1],
 					characterSize, textIdleColor, textHoverColor,
-					idleColor, hoverColor)
+					texturePath, hoverTexturePath)
 				);
 		buttons[i]->SetId(i + 1);
 	}

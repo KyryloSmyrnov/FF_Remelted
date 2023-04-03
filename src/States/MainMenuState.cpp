@@ -7,9 +7,6 @@
  *	| |    | |     | |  |  __/| | | | | ||  __/| || |_|  __/| (_| |
  *	\_|    \_|     |_|   \___||_| |_| |_| \___||_| \__|\___| \__,_|
  *															   
- * Copyright (C) 2023 Kyrylo Smyrnov
- * 
- * @KyryloSmyrnov
 *******************************************************************
  */
 
@@ -112,20 +109,20 @@ void MainMenuState::InitGUI()
 	this->backgroundParticles.setTexture(&this->backgroundParticlesTexture);
 
 	this->buttons["TESTBUTTON1"] = new Button(
-		100, window->getSize().y * 0.6, 350, 100,
-		&font, "Test Button 1", 32,
-		sf::Color(208, 208, 208, 255), sf::Color(255, 255, 255, 255),
-		sf::Color(29, 44, 104, 255), sf::Color(87, 110, 199, 255));
-
+		100, 900, 600, 80,
+		&font, "Test Button 1", 28,
+		sf::Color(160, 160, 160), sf::Color::White,
+		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
+	
 	this->buttons["TESTBUTTON2"] = new Button(
-		100, window->getSize().y * 0.7, 350, 100,
-		&font, "Test Button 2", 32,
-		sf::Color(208, 208, 208, 255), sf::Color(255, 255, 255, 255),
-		sf::Color(29, 44, 104, 255), sf::Color(87, 110, 199, 255));
-
+		100, 990, 600, 80,
+		&font, "Test Button 2", 28,
+		sf::Color(160, 160, 160), sf::Color::White,
+		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
+	
 	this->buttons["TESTBUTTON3"] = new Button(
-		100, window->getSize().y * 0.8, 350, 100,
-		&font, "Test Button 3", 32,
-		sf::Color(208, 208, 208, 255), sf::Color(255, 255, 255, 255),
-		sf::Color(29, 44, 104, 255), sf::Color(87, 110, 199, 255));
+		100, 1080, 600, 80,
+		&font, "Test Button 3", 28,
+		sf::Color(160, 160, 160), sf::Color::White,
+		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 }

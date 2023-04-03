@@ -7,9 +7,6 @@
  *	| |    | |     | |  |  __/| | | | | ||  __/| || |_|  __/| (_| |
  *	\_|    \_|     |_|   \___||_| |_| |_| \___||_| \__|\___| \__,_|
  *															   
- * Copyright (C) 2023 Kyrylo Smyrnov
- * 
- * @KyryloSmyrnov
 *******************************************************************
  */
 
@@ -26,7 +23,7 @@ public:
 	DropDownList(float x, float y, float width, float height,
 		sf::Font& font, std::vector<std::string> list, unsigned int characterSize,
 		sf::Color textIdleColor, sf::Color textHoverColor,
-		sf::Color idleColor, sf::Color hoverColor,
+		std::string texturePath, std::string hoverTexturePath,
 		unsigned int defaultId = 0);
 	~DropDownList();
 

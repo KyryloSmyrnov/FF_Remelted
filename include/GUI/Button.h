@@ -7,9 +7,6 @@
  *	| |    | |     | |  |  __/| | | | | ||  __/| || |_|  __/| (_| |
  *	\_|    \_|     |_|   \___||_| |_| |_| \___||_| \__|\___| \__,_|
  *															   
- * Copyright (C) 2023 Kyrylo Smyrnov
- * 
- * @KyryloSmyrnov
 *******************************************************************
  */
 
@@ -35,7 +32,7 @@ public:
 	Button(float x, float y, float width, float height,
 		sf::Font* font, std::string text, unsigned int characterSize,
 		sf::Color textIdleColor, sf::Color textHoverColor,
-		sf::Color idleColor, sf::Color hoverColor);
+		std::string texturePath, std::string hoverTexturePath);
 	~Button();
 
 	void Update(const sf::Vector2i& mousePosition);
@@ -54,21 +51,16 @@ public:
 private:
 	buttonState currentState;
 
+	sf::Texture buttonTexture;
+	sf::Texture buttonHoverTexture;
 	sf::RectangleShape buttonShape;
-
-	sf::Sprite buttonIcon;
-	sf::Sprite buttonBackgroud;
 
 	sf::Font* font;
 	sf::Text text;
 
 	sf::Color textIdleColor;
 	sf::Color textHoverColor;
-
-	sf::Color idleColor;
-	sf::Color hoverColor;
-
+	
 	unsigned short int buttonId;
-
 	bool isClicked = false;
 };

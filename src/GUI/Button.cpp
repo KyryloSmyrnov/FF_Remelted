@@ -7,9 +7,6 @@
  *	| |    | |     | |  |  __/| | | | | ||  __/| || |_|  __/| (_| |
  *	\_|    \_|     |_|   \___||_| |_| |_| \___||_| \__|\___| \__,_|
  *															   
- * Copyright (C) 2023 Kyrylo Smyrnov
- * 
- * @KyryloSmyrnov
 *******************************************************************
  */
 
@@ -18,15 +15,19 @@
 Button::Button(float x, float y, float width, float height,
 	sf::Font* font, std::string text, unsigned int characterSize,
 	sf::Color textIdleColor, sf::Color textHoverColor,
-	sf::Color idleColor, sf::Color hoverColor)
+	std::string texturePath = "placeholder", std::string hoverTexturePath = "placeholder")
 {
 	this->currentState = BUTTONIDLE;
 
+	if(!this->buttonTexture.loadFromFile(texturePath) && texturePath != "placeholder")
+		throw("[ERROR] BUTTON: UNABLE TO LOAD IMAGE (" + texturePath + ")");
+	
+	if(!this->buttonHoverTexture.loadFromFile(hoverTexturePath) && hoverTexturePath != "placeholder")
+		throw("[ERROR] BUTTON: UNABLE TO LOAD IMAGE (" + hoverTexturePath + ")");
+	
 	this->buttonShape.setPosition(sf::Vector2f(x, y));
 	this->buttonShape.setSize(sf::Vector2f(width, height));
-
-	this->buttonIcon = buttonIcon;
-	this->buttonBackgroud = buttonBackgroud;
+	this->buttonShape.setTexture(&buttonTexture);
 
 	this->font = font;
 	this->text.setFont(*this->font);
@@ -38,9 +39,6 @@ Button::Button(float x, float y, float width, float height,
 
 	this->textIdleColor = textIdleColor;
 	this->textHoverColor = textHoverColor;
-
-	this->idleColor = idleColor;
-	this->hoverColor = hoverColor;
 }
 
 Button::~Button() {}
@@ -65,12 +63,12 @@ void Button::Update(const sf::Vector2i& mousePosition)
 	switch (currentState)
 	{
 		case BUTTONIDLE:
-			this->buttonShape.setFillColor(this->idleColor);
+			this->buttonShape.setTexture(&buttonTexture);
 			this->text.setFillColor(this->textIdleColor);
 			break;
 
 		case BUTTONHOVER:
-			this->buttonShape.setFillColor(this->hoverColor);
+			this->buttonShape.setTexture(&buttonHoverTexture);
 			this->text.setFillColor(this->textHoverColor);
 			break;
 		case BUTTONCLICKED:
@@ -97,8 +95,8 @@ const bool Button::IsPressed() const
 void Button::CenterText()
 {
 	this->text.setPosition(
-		this->buttonShape.getPosition().x + this->buttonShape.getSize().x * 0.5f - this->text.getGlobalBounds().width * 0.5f,
-		this->buttonShape.getPosition().y + this->buttonShape.getSize().y * 0.5f - this->text.getGlobalBounds().height * 0.5f
+		this->buttonShape.getPosition().x + this->buttonShape.getSize().x * 0.1,
+		this->buttonShape.getPosition().y + this->buttonShape.getSize().y * 0.5f - this->text.getGlobalBounds().height
 		);
 }
 
