@@ -31,6 +31,7 @@ public:
 
 	void UpdateInput(const float& dt) override;
 	void UpdateButtons();
+	void UpdateParticles(const float dt);
 	void Update(const float& dt) override;
 
 	void RenderButtons(sf::RenderTarget& target);
@@ -38,7 +39,9 @@ public:
 
 private:
 	sf::Texture backgroundTexture;
+	sf::Texture backgroundParticlesTexture;
 	sf::RectangleShape background;
+	sf::RectangleShape backgroundParticles;
 	sf::Font font;
 
 	sf::RectangleShape buttonBackground;
