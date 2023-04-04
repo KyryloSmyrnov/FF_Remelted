@@ -88,6 +88,8 @@ void MainMenuState::ResetGUI()
 
 void MainMenuState::InitGUI()
 {
+	// JUST A TESTS BELOW
+	
 	const sf::VideoMode& videoMode = this->stateData->graphicsSettings->resolution;
 
 	this->background.setSize(sf::Vector2f(
@@ -107,22 +109,25 @@ void MainMenuState::InitGUI()
 	this->background.setTexture(&this->backgroundTexture);
 
 	this->backgroundParticles.setTexture(&this->backgroundParticlesTexture);
-
+	
 	this->buttons["TESTBUTTON1"] = new Button(
-		100, 900, 600, 80,
-		&font, "Test Button 1", 28,
+		AdaptPositionToResolution(5.0f, 65.0f).x, AdaptPositionToResolution(5.0f, 65.0f).y,
+		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
+		&font, "New Game", AdaptFontSize(),
 		sf::Color(160, 160, 160), sf::Color::White,
 		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 	
 	this->buttons["TESTBUTTON2"] = new Button(
-		100, 990, 600, 80,
-		&font, "Test Button 2", 28,
+		AdaptPositionToResolution(5.0f, 70.0f).x, AdaptPositionToResolution(5.0f, 70.0f).y,
+		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
+		&font, "Continue", AdaptFontSize(),
 		sf::Color(160, 160, 160), sf::Color::White,
 		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 	
 	this->buttons["TESTBUTTON3"] = new Button(
-		100, 1080, 600, 80,
-		&font, "Test Button 3", 28,
+		AdaptPositionToResolution(5.0f, 75.0f).x, AdaptPositionToResolution(5.0f, 75.0f).y,
+		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
+		&font, "Load Game", AdaptFontSize(),
 		sf::Color(160, 160, 160), sf::Color::White,
 		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 }

@@ -46,6 +46,8 @@ protected:
 
 	float gridSize;
 
+	int baseFontSize = 28;
+
 	sf::Vector2i screenMousePosition;
 	sf::Vector2i windowMousePosition;
 	sf::Vector2f viewMousePosition;
@@ -53,5 +55,9 @@ protected:
 
 	std::map<std::string, sf::Texture> textures;
 
+	sf::Vector2f AdaptPositionToResolution(float xPrc, float yPrc);
+	sf::Vector2f AdaptButtonSizeToResolution();
+	int AdaptFontSize();
+	
 	virtual void InitKeyBinds() = 0;
 };

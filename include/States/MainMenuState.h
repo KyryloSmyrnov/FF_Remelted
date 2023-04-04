@@ -47,6 +47,8 @@ private:
 	void InitVariables();
 	void InitKeyBinds() override { };
 	void InitFont();
-	void ResetGUI();
 	void InitGUI();
+	
+	void ResetGUI();
+	
 };

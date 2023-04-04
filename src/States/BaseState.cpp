@@ -59,3 +59,30 @@ void BaseState::UpdateMousePositions(sf::View* view)
 
 	this->window->setView(this->window->getDefaultView());
 }
+
+sf::Vector2f BaseState::AdaptPositionToResolution(float xPrc, float yPrc)
+{
+	return sf::Vector2f(std::floor(static_cast<float>(stateData->graphicsSettings->resolution.width * (xPrc / 100.0f))),
+						std::floor(static_cast<float>(stateData->graphicsSettings->resolution.height) * (yPrc / 100.0f)));
+}
+
+sf::Vector2f BaseState::AdaptButtonSizeToResolution()
+{
+	return sf::Vector2f(stateData->graphicsSettings->resolution.width * 0.23f,
+						stateData->graphicsSettings->resolution.height * 0.05f);
+}
+
+int BaseState::AdaptFontSize()
+{
+	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+	int screenWidth = desktop.width;
+	int screenHeight = desktop.height;
+	
+	float scaleFactorX = static_cast<float>(stateData->graphicsSettings->resolution.width) / 2560.0f;
+	float scaleFactorY = static_cast<float>(stateData->graphicsSettings->resolution.height) / 1440.0f;
+	float scaleFactor = std::min(scaleFactorX, scaleFactorY);
+	
+	int fontSize = static_cast<int>(baseFontSize * scaleFactor);
+
+	return fontSize;
+}
