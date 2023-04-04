@@ -74,10 +74,6 @@ sf::Vector2f BaseState::AdaptButtonSizeToResolution()
 
 int BaseState::AdaptFontSize()
 {
-	sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-	int screenWidth = desktop.width;
-	int screenHeight = desktop.height;
-	
 	float scaleFactorX = static_cast<float>(stateData->graphicsSettings->resolution.width) / 2560.0f;
 	float scaleFactorY = static_cast<float>(stateData->graphicsSettings->resolution.height) / 1440.0f;
 	float scaleFactor = std::min(scaleFactorX, scaleFactorY);
