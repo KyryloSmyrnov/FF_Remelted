@@ -20,8 +20,6 @@
 #include "States/BaseState.h"
 #include "States/StateData.h"
 
-#include <iostream>
-
 class MainMenuState : public BaseState
 {
 public:
