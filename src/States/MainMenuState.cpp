@@ -25,12 +25,15 @@ MainMenuState::~MainMenuState()
 		delete it->second;
 }
 
-void MainMenuState::UpdateInput(const float& dt) {}
-
 void MainMenuState::UpdateButtons()
 {
 	for (auto& it : this->buttons)
 		it.second->Update(static_cast<sf::Vector2i>(this->viewMousePosition));
+
+	//if(this->buttons["NEWGAME"]->IsPressed())
+		
+	if(this->buttons["EXIT"]->IsPressed())
+		this->window->close();
 }
 
 void MainMenuState::UpdateParticles(const float dt)
@@ -88,8 +91,6 @@ void MainMenuState::ResetGUI()
 
 void MainMenuState::InitGUI()
 {
-	// JUST A TESTS BELOW
-	
 	const sf::VideoMode& videoMode = this->stateData->graphicsSettings->resolution;
 
 	this->background.setSize(sf::Vector2f(
@@ -110,24 +111,17 @@ void MainMenuState::InitGUI()
 
 	this->backgroundParticles.setTexture(&this->backgroundParticlesTexture);
 	
-	this->buttons["TESTBUTTON1"] = new Button(
+	this->buttons["NEWGAME"] = new Button(
 		AdaptPositionToResolution(5.0f, 65.0f).x, AdaptPositionToResolution(5.0f, 65.0f).y,
 		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
 		&font, "New Game", AdaptFontSize(),
 		sf::Color(160, 160, 160), sf::Color::White,
 		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 	
-	this->buttons["TESTBUTTON2"] = new Button(
+	this->buttons["EXIT"] = new Button(
 		AdaptPositionToResolution(5.0f, 70.0f).x, AdaptPositionToResolution(5.0f, 70.0f).y,
 		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
-		&font, "Continue", AdaptFontSize(),
-		sf::Color(160, 160, 160), sf::Color::White,
-		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
-	
-	this->buttons["TESTBUTTON3"] = new Button(
-		AdaptPositionToResolution(5.0f, 75.0f).x, AdaptPositionToResolution(5.0f, 75.0f).y,
-		AdaptButtonSizeToResolution().x, AdaptButtonSizeToResolution().y,
-		&font, "Load Game", AdaptFontSize(),
+		&font, "Exit", AdaptFontSize(),
 		sf::Color(160, 160, 160), sf::Color::White,
 		"Resources/Images/MainMenu/Button.png", "Resources/Images/MainMenu/ButtonH.png");
 }

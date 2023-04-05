@@ -20,15 +20,17 @@
 #include "States/BaseState.h"
 #include "States/StateData.h"
 
+#include <iostream>
+
 class MainMenuState : public BaseState
 {
 public:
 	MainMenuState(StateData* stateData);
 	virtual ~MainMenuState();
-
-	void UpdateInput(const float& dt) override;
+	
 	void UpdateButtons();
 	void UpdateParticles(const float dt);
+	virtual void UpdateInput(const float& dt) { }
 	void Update(const float& dt) override;
 
 	void RenderButtons(sf::RenderTarget& target);
@@ -43,8 +45,7 @@ private:
 
 	sf::RectangleShape buttonBackground;
 	std::map<std::string, Button*> buttons;
-
-	void InitVariables();
+	
 	void InitKeyBinds() override { };
 	void InitFont();
 	void InitGUI();
