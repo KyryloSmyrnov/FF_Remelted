@@ -19,7 +19,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Mouse.hpp>
 
-enum buttonState
+enum BUTTONSTATES
 {
 	BUTTONIDLE = 0,
 	BUTTONHOVER = 1,
@@ -49,7 +49,7 @@ public:
 	void SetId(int id);
 
 private:
-	buttonState currentState;
+	BUTTONSTATES currentState;
 
 	sf::Texture buttonTexture;
 	sf::Texture buttonHoverTexture;
