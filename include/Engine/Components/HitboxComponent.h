@@ -22,7 +22,7 @@ class HitboxComponent
 {
 public:
 	HitboxComponent(sf::Sprite& sprite, float xOffset, float yOffset, float width, float height);
-	virtual ~HitboxComponent();
+	virtual ~HitboxComponent() { };
 
 	const sf::Vector2f& GetPosition() const;
 	const sf::FloatRect GetGlobalBounds() const;

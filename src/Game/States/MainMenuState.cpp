@@ -10,7 +10,7 @@
 *******************************************************************
  */
 
-#include "States/MainMenuState.h"
+#include "Game/States/MainMenuState.h"
 
 MainMenuState::MainMenuState(StateData* stateData)
 	: BaseState(stateData)

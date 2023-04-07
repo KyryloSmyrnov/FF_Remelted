@@ -10,13 +10,9 @@
 *******************************************************************
  */
 
-#include "Components/AnimationComponent.h"
+#include "Engine/Components/AnimationComponent.h"
 
-AnimationComponent::AnimationComponent(sf::Sprite& sprite, sf::Texture& animetionSheet)
-{
-	this->sprite = sprite;
-	this->animationSheet = animationSheet;
-}
+AnimationComponent::AnimationComponent(sf::Sprite& sprite, sf::Texture& animetionSheet) : sprite(sprite), animationSheet(animationSheet) { }
 
 AnimationComponent::~AnimationComponent()
 {
@@ -26,7 +22,7 @@ AnimationComponent::~AnimationComponent()
 
 const bool& AnimationComponent::IsDone(const std::string key)
 {
-	return this->animations[key]->isDone();
+	return this->animations[key]->isDone;
 }
 
 void AnimationComponent::AddAnimation(const std::string key, float animationTimer, int startFrameX, int startFrameY, int framesX, int framesY, int width, int height)
@@ -46,9 +42,8 @@ const bool& AnimationComponent::Play(const std::string key, const float& dt, con
 
 AnimationComponent::Animation::Animation(sf::Sprite& sprite, sf::Texture& animationSheet,
 	float animationTimer, int startFrameX, int startFrameY, int framesX, int framesY, int width, int height)
+		: sprite(sprite), animationSheet(animationSheet)
 {
-	this->sprite = sprite;
-	this->animationSheet = animationSheet;
 	this->animationTimer = animationTimer;
 	this->width = width;
 	this->height = height;

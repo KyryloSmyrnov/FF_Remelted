@@ -10,7 +10,7 @@
 *******************************************************************
  */
 
-#include <Settings/GraphicsSettings.h>
+#include <Engine/Settings/GraphicsSettings.h>
 
 GraphicsSettings::GraphicsSettings()
 {

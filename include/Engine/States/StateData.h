@@ -16,7 +16,7 @@
 #include <stack>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "BaseState.h"
-#include "Settings/GraphicsSettings.h"
+#include "Engine/Settings/GraphicsSettings.h"
 
 class BaseState;
 

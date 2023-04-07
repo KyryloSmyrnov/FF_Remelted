@@ -10,14 +10,10 @@
 *******************************************************************
  */
 
-#include "Components/HitboxComponent.h"
+#include "Engine/Components/HitboxComponent.h"
 
-HitboxComponent::HitboxComponent(sf::Sprite& sprite, float xOffset, float yOffset, float width, float height)
+HitboxComponent::HitboxComponent(sf::Sprite& sprite, float xOffset, float yOffset, float width, float height) : sprite(sprite), xOffset(xOffset), yOffset(yOffset)
 {
-	this->sprite = sprite;
-	this->xOffset = xOffset;
-	this->yOffset = yOffset;
-
 	this->hitbox.setPosition(this->sprite.getPosition().x + xOffset, this->sprite.getPosition().y + yOffset);
 	this->hitbox.setSize(sf::Vector2f(width, height));
 	this->hitbox.setFillColor(sf::Color::Transparent);

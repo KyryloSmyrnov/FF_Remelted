@@ -16,9 +16,9 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Texture.hpp>
-#include "GUI/Button.h"
-#include "States/BaseState.h"
-#include "States/StateData.h"
+#include "Engine/GUI/Button.h"
+#include "Engine/States/BaseState.h"
+#include "Engine/States/StateData.h"
 
 class MainMenuState : public BaseState
 {

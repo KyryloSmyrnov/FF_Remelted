@@ -10,11 +10,10 @@
 *******************************************************************
  */
 
-#include "Components/MovementComponent.h"
+#include "Engine/Components/MovementComponent.h"
 
-MovementComponent::MovementComponent(sf::Sprite sprite, float maxVelocity, float acceleration)
+MovementComponent::MovementComponent(sf::Sprite sprite, float maxVelocity, float acceleration) : sprite(sprite)
 {
-	this->sprite = sprite;
 	this->maxVelocity = maxVelocity;
 	this->acceleration = acceleration;
 }

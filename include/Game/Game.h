@@ -15,8 +15,8 @@
 #include <stack>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "Settings/GraphicsSettings.h"
-#include "States/BaseState.h"
+#include "Engine/Settings/GraphicsSettings.h"
+#include "Engine/States/BaseState.h"
 #include "States/MainMenuState.h"
 
 class Game
